@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Nuzar</title>
+  <title>MarketSort</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -11,14 +11,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   
   <style>
-* {
+{
     box-sizing: border-box;
+}
+
+
+.thumbnail{
+    max-height: 50%;
+    max-width: 100%;
 }
 
 /* Create two equal columns that floats next to each other */
 .column {
     float: left;
-    width: 50%;
+    width: 20%;
     padding: 10px;
 }
 
@@ -28,24 +34,6 @@
     display: table;
     clear: both;
 }
-/* Style the buttons */
-.btn {
-    border: none;
-    outline: none;
-    padding: 12px 16px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #ddd;
-}
-
-.btn.active {
-    background-color: #666;
-    color: white;
-}
-
 html, body{
   padding: 0;
   margin: 0;
@@ -65,82 +53,84 @@ body{
   <!--Navigation bar-->
 <div id="nav-placeholder"></div>
 
- <div id="btnContainer">
-<button class="btn" onclick="listView()"><i class="fa fa-bars"></i> List</button> 
-<button class="btn active" onclick="gridView()"><i class="fa fa-th-large"></i> Grid</button>
-</div>
-<br>
+
   <div class="row" style= "height: 50vh;">
-  <div class="column" style="background-color:#7fcce5;">
-    <h2>Phone 1</h2>
-    <p>Some text..</p>
+  <div class="column" style="background-color:#70b7ff;">
+     <a href="#">
+	 <center>
+	<h2>iPhone X</h2>
+	<img src="iPhonex123.png"  style="height: 40vh; width: 17vw;"/>
+	</center>
+	</a>
   </div>
-  <div class="column" style="background-color:#99d6ea;">
-    <h2>Phone 2</h2>
-    <p>Some text..</p>
+  <div class="column" style="background-color:#84c1ff;">
+     <a href="#">
+	 <center>
+	<h2>Samsung S9</h2>
+	<img src="samsunggals9.png" style="height: 40vh; width: 17vw;"/>
+	</center>
+	</center>
+	</a>
   </div>
-  <div class="column" style="background-color:#b2e0ef;">
-    <h2>Phone 3</h2>
-    <p>Some text..</p>
+  <div class="column" style="background-color:#99ccff;">
+     <a href="#">
+	 <center>
+	<h2>Google Pixel 2</h2></center>
+	<img src="googlepixel2.png" style="height: 40vh; width: 17vw;"/>
+	</a>
   </div>
-  <div class="column" style="background-color:#cceaf4;">
-    <h2>Phone 4</h2>
-    <p>Some text..</p>
+  <div class="column" style="background-color:#add6ff;">
+     <a href="#">
+	 <center>
+	<h2> iPhone 8</h2></center>
+	<img src="iphone81.png" style="height: 40vh; width: 17vw;"/>
+	</a>
+  </div>
+  <div class="column" style="background-color:#c1e0ff;">
+     <a href="#">
+	 <center>
+	<h2>HTC U11</h2></center>
+	<img src="htcu11.png" style="height: 40vh; width: 17vw;"/>
+	</a>
   </div>
 </div>
 
 <div class="row" style="height: 50vh;">
-  <div class="column" style="background-color:#7fcce5;">
-    <h2>Phone 5</h2>
-    <p>Some text..</p>
+  <div class="column" style="background-color:#c1e0ff;">
+   <a href="#">
+   <center>
+    <h2>Huawei Mate 10 Pro</h2></center>
+	<img src="huawei.png" style="height: 40vh; width: 17vw;"/>
+	</a>
   </div>
-  <div class="column" style="background-color:#99d6ea;">
-    <h2>Phone 6</h2>
-    <p>Some text..</p>
+  <div class="column" style="background-color:#add6ff;">
+   <a href="#">
+   <center>
+    <h2>OnePlus 5T</h2></center>
+	<img src="oneplus1.png" style="height: 40vh; width: 17vw;"/>
+	</a>
   </div>
-  <div class="column" style="background-color:#b2e0ef;">
-    <h2>Phone 7</h2>
-    <p>Some text..</p>
+  <div class="column" style="background-color:#99ccff;" >
+  <a href="#">
+    <center><h2>Moto Z2 Force</h2></center>
+	<img src="moto.png" style="height: 40vh; width: 17vw;"/>
+	</a>
   </div>
-  <div class="column" style="background-color:#cceaf4;">
-    <h2>Phone 8</h2>
-    <p>Some text..</p>
+  <div class="column" style="background-color:#84c1ff;">
+   <a href="#">
+    <center><h2>Samsung Galaxy Note 8</h2></center>
+	<img src="note8.png" style="height: 40vh; width: 17vw;"/>
+	</a>
+  </div>
+  <div class="column" style="background-color:#70b7ff;">
+   <a href="#">
+    <center><h2>LG v30</h2></center>
+	<img src="lg.png" style="height: 40vh; width: 17vw;"/>
+	</a>
   </div>
 </div>
 
 
-<script>
-// Get the elements with class="column"
-var elements = document.getElementsByClassName("column");
-
-// Declare a loop variable
-var i;
-
-// List View
-function listView() {
-    for (i = 0; i < elements.length; i++) {
-        elements[i].style.width = "100%";
-    }
-}
-
-// Grid View
-function gridView() {
-    for (i = 0; i < elements.length; i++) {
-        elements[i].style.width = "50%";
-    }
-}
-
-/* Optional: Add active class to the current button (highlight it) */
-var container = document.getElementById("btnContainer");
-var btns = container.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-</script>
 
 
 <script>
