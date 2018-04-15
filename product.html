@@ -8,9 +8,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <style>
-    div.row, div.col-lg-6 {
+    div.row, div.col {
         border-style: solid;
     }
 </style>
@@ -21,16 +22,17 @@
 
 <div class="container-fluid">
     <div class="row m-5">
-        <div class="col-lg-6">
+        <div class="col">
             <!-- Here goes the pictures of the phone -->
             <div id="images-visualization"></div>
         </div>
-        <div class="col-lg-6">
+        <div class="col">
             <!-- Here goes the user reviews visualization -->
+            <div id="rating-visualization"></div>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col">
             <!-- Websites for the product -->
         </div>
     </div>
@@ -42,6 +44,9 @@ $(function(){
 });
 $(function(){
   $("#images-visualization").load("with-jquery.html");
+});
+$(function(){
+  $("#rating-visualization").load("rating.html");
 });
 </script>
 
