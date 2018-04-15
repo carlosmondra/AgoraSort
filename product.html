@@ -9,15 +9,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
+<style>
+    div.row, div.col-lg-6 {
+        border-style: solid;
+    }
+</style>
 <body>
   
   <!--Navigation bar-->
 <div id="nav-placeholder"></div>
 
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row m-5">
         <div class="col-lg-6">
             <!-- Here goes the pictures of the phone -->
+            <div id="images-visualization"></div>
         </div>
         <div class="col-lg-6">
             <!-- Here goes the user reviews visualization -->
@@ -33,6 +39,9 @@
 <script>
 $(function(){
   $("#nav-placeholder").load("nav.html");
+});
+$(function(){
+  $("#images-visualization").load("with-jquery.html");
 });
 </script>
 
