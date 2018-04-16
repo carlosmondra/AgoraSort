@@ -7,6 +7,10 @@
 </head>
 <body style="padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans'">
 
+    <div>
+        Phone selected : <?php echo $_GET["phone"] ?>
+    </div>
+
     <!-- #region Jssor Slider Begin -->
     <!-- Generator: Jssor Slider Maker -->
     <!-- Source: https://www.jssor.com -->

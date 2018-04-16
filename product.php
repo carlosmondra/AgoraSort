@@ -43,12 +43,11 @@ $(function(){
   $("#nav-placeholder").load("nav.php");
 });
 $(function(){
-  $("#images-visualization").load("with-jquery.php");
+  $("#images-visualization").load("with-jquery.php?phone=<?php echo $_GET["phone"] ?>");
 });
 $(function(){
   $("#rating-visualization").load("rating.php");
 });
-$("#test-image").attr("src","img/032.jpg");
 </script>
 
 </body>

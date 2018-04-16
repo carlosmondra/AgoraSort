@@ -56,7 +56,7 @@ body{
 <div class="container-fluid">
     <div class="row">
         <div class="col" style="background-color:#70b7ff;" >
-			<a href="product.php">
+			<a href="product.php?phone=iPhoneX">
 			<center>
 			<h2>iPhone X</h2>
 			</center>
@@ -66,7 +66,7 @@ body{
 			</div>
         </div>
         <div class="col" style="background-color:#84c1ff;">
-           <a href="product.php">
+           <a href="product.php?phone=SamsungS9">
 			<center>
 			<h2>Samsung S9</h2>
 			</center>
@@ -76,7 +76,7 @@ body{
 			</div>
         </div>
 		<div class="col" style="background-color:#99ccff;">
-			 <a href="product.php">
+			 <a href="product.php?phone=GooglePixel2">
 			<center>
 			<h2>Google Pixel 2</h2></center></a>
 			<div class="centerBlock">
@@ -85,7 +85,7 @@ body{
 			
 		</div>
 		<div class="col" style="background-color:#add6ff;">
-			<a href="product.php">
+			<a href="product.php?phone=iPhone8">
 			<center>
 			<h2> iPhone 8</h2></center>
 			</a>
@@ -95,7 +95,7 @@ body{
 
 		</div>
 		<div class="col" style="background-color:#c1e0ff;">
-			<a href="product.php">
+			<a href="product.php?phone=HTC11">
 			 <center>
 			<h2>HTC U11</h2></center>
 			</a>
@@ -107,7 +107,7 @@ body{
 		
 	<div class="row">
 		<div class="col" style="background-color:#c1e0ff;">
-			<a href="product.php">
+			<a href="product.php?phone=SamsungNote8">
 			<center><h2>Samsung Galaxy Note 8</h2></center>
 			</a>
 			<div class="centerBlock">
@@ -115,7 +115,7 @@ body{
 			</div>
 		</div>
 		<div class="col" style="background-color:#add6ff;">
-			<a href="product.php">
+			<a href="product.php?phone=Huawei">
 			<center>
 			<h2>Huawei Mate 10 Pro</h2></center>
 			</a>
@@ -124,7 +124,7 @@ body{
 			</div>
 		</div>
 		<div class="col" style="background-color:#99ccff;">
-			<a href="product.php">
+			<a href="product.php?phone=OnePlus">
 			<center>
 			<h2>OnePlus 5T</h2></center>
 			</a>
@@ -133,7 +133,7 @@ body{
 			</div>
 		</div>
 		<div class="col" style="background-color:#84c1ff;">
-			<a href="product.php">
+			<a href="product.php?phone=Motorola">
 			<center><h2>Moto Z2 Force</h2></center>
 			</a>
 			<div class="centerBlock">
@@ -141,7 +141,7 @@ body{
 			</div>
 		</div>
 		<div class="col" style="background-color:#70b7ff;">
-			<a href="product.php">
+			<a href="product.php?phone=LG">
 			<center><h2>LG v30</h2></center>
 			</a>
 			<div class="centerBlock">		
