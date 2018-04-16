@@ -70,8 +70,6 @@ d3.json("data.json", function(error, data) {
         .attr("height", y.bandwidth())
         .attr("y", function(d) { return y(d.area); })
         .attr("width", function(d) { 
-            console.log(svg.attr("width"))
-            console.log(x(d.value))
             return x(d.value); })
         .on("mousemove", function(d){
             tooltip
