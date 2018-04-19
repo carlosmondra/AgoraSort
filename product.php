@@ -18,17 +18,30 @@
 <body>
   
   <!--Navigation bar-->
-<div id="nav-placeholder"></div>
+<div id="nav-placeholder">
+    <?php
+        include 'nav.php';
+    ?>
+</div>
 
 <div class="container-fluid">
     <div class="row m-5">
         <div class="col">
             <!-- Here goes the pictures of the phone -->
-            <div id="images-visualization"></div>
+            <div id="images-visualization">
+                <?php 
+                    $phone = $_GET["phone"];
+                    include 'with-jquery.php';
+                ?>
+            </div>
         </div>
         <div class="col">
             <!-- Here goes the user reviews visualization -->
-            <div id="rating-visualization"></div>
+            <div id="rating-visualization">
+                <?php
+                    include "rating.php";
+                ?>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -37,18 +50,6 @@
         </div>
     </div>
 </div>
-
-<script>
-$(function(){
-  $("#nav-placeholder").load("nav.php");
-});
-$(function(){
-  $("#images-visualization").load("with-jquery.php?phone=<?php echo $_GET["phone"] ?>");
-});
-$(function(){
-  $("#rating-visualization").load("rating.php");
-});
-</script>
 
 </body>
 </html>

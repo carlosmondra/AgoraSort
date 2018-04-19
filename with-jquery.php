@@ -8,7 +8,7 @@
 <body style="padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans'">
 
     <div>
-        Phone selected : <?php echo $_GET["phone"] ?>
+        <?php echo "Phone selected: " . $phone; ?>
     </div>
 
     <!-- #region Jssor Slider Begin -->

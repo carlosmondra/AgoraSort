@@ -51,7 +51,11 @@ body{
 <body>
   
   <!--Navigation bar-->
-<div id="nav-placeholder"></div>
+	<div id="nav-placeholder">
+		<?php
+			include 'nav.php';
+		?>
+	</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -151,12 +155,6 @@ body{
 		
 </div>
 
-
-<script>
-$(function(){
-  $("#nav-placeholder").load("nav.php");
-});
-</script>
 
 </body>
 </html>
