@@ -82,29 +82,29 @@ EOF;
 			?><div class="row"><?php
 		} ?>
 		<div class="col">
-		<a href="product.php?phone=<?php echo preg_replace('/\s/', '', $row['PHONE_NAME']); ?>">
-			<center>
-				<h2><?php echo $row['PHONE_NAME']; ?></h2>
-			</center>
-		</a>
-		<div class="centerBlock product-img">
-			<img src="<?php echo $row['IMG_URL']; ?>"  class="img-responsive" style="max-height: 100%; max-width: 100%"/>
-			<div class="overlay">
-				<div class="text">
-					<?php echo $row['HEADLINE']; ?>
-					<br>
-					Expert Rating: <?php echo $row['EXPERT_RATING']; ?>
-					<br>
-					User Rating: <?php echo $row['USER_RATING']; ?>
+			<a href="product.php?phone=<?php echo preg_replace('/\s/', '', $row['PHONE_NAME']); ?>">
+				<center>
+					<h2><?php echo $row['PHONE_NAME']; ?></h2>
+				</center>
+			</a>
+			<div class="centerBlock product-img">
+				<img src="<?php echo $row['IMG_URL']; ?>"  class="img-responsive" style="max-width: 100%; height: auto;"/>
+				<div class="overlay">
+					<div class="text">
+						<?php echo $row['HEADLINE']; ?>
+						<br>
+						Expert Rating: <?php echo $row['EXPERT_RATING']; ?>
+						<br>
+						User Rating: <?php echo $row['USER_RATING']; ?>
 					</div>
 				</div>
 			</div>
         </div>
 		<?php 
+		$count = $count + 1;
 		if ($count % 5 == 0) {
 			?></div><?php
 		}
-		$count = $count + 1;
 	}
 	$db->close();
 ?>
