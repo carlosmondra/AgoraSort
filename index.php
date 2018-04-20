@@ -69,9 +69,9 @@ body{
 				</center>
 			</a>
 			<div class="centerBlock product-img">
-				<img src="iphonexfinal.png"  class="img-responsive" style="max-height: 100%; max-width: 100%"/>
+				<img src="img/indexImg/iphonexfinal.png"  class="img-responsive" style="max-height: 100%; max-width: 100%"/>
 				<div class="overlay">
-					<div class="test">
+					<div class="text">
 						Great Camera!
 						<br>
 						Expert Rating:
