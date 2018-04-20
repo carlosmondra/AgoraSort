@@ -26,7 +26,7 @@
 
 <div class="container-fluid">
     <div class="row m-5">
-        <div class="col">
+        <div class="col-sm">
             <!-- Here goes the pictures of the phone -->
             <div id="images-visualization">
                 <?php 
@@ -35,7 +35,7 @@
                 ?>
             </div>
         </div>
-        <div class="col">
+        <div class="col-sm">
             <!-- Here goes the user reviews visualization -->
             <div id="rating-visualization">
                 <?php
