@@ -43,7 +43,7 @@ EOF;
 		if ($count % 5 == 0) {
 			?><div class="row"><?php
 		} ?>
-		<div class="col">
+		<div class="col-lg col-md col-sm-6 col-xs-12">
 			<div class="centerBlock product-img">
 				<img src="<?php echo $row['IMG_URL']; ?>"  class="img-responsive" style="max-width: 100%; height: auto;"/>
 				<a href="product.php?phone=<?php echo preg_replace('/\s/', '', $row['PHONE_NAME']); ?>">
