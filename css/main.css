@@ -17,7 +17,7 @@
 
 .text {
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -25,3 +25,19 @@
     -ms-transform: translate(-50%, -50%);
     text-align: center;
 }
+
+/* a:link {
+    background-color: white;
+}
+
+a:visited {
+    background-color: cyan;
+}
+
+a:hover {
+    background-color: white;
+}
+
+a:active {
+    background-color: white;
+} */

@@ -11,44 +11,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="css/main.css">
-
-
-  <style>
-
-.thumbnail{
-    max-height: 50%;
-    max-width: 100%;
-}
-
-/* Create two equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 20%;
-    padding: 10px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-html, body{
-  padding: 0;
-  margin: 0;
-}
-html{
-  height: 100%;
-}
-body{
-  min-height: 100%;
-}
-
-.centerBlock {
-  display: table;
-  margin: auto;
-}
-</style>
 </head>
 
 <body>
@@ -79,26 +41,27 @@ EOF;
 	$ret = $db->query($sql);
 	while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
 		if ($count % 5 == 0) {
-			?><div class="row"><?php
+			?><div class="row m-3"><?php
 		} ?>
 		<div class="col">
-			<a href="product.php?phone=<?php echo preg_replace('/\s/', '', $row['PHONE_NAME']); ?>">
-				<center>
-					<h2><?php echo $row['PHONE_NAME']; ?></h2>
-				</center>
-			</a>
 			<div class="centerBlock product-img">
 				<img src="<?php echo $row['IMG_URL']; ?>"  class="img-responsive" style="max-width: 100%; height: auto;"/>
-				<div class="overlay">
-					<div class="text">
-						<?php echo $row['HEADLINE']; ?>
-						<br>
-						Expert Rating: <?php echo $row['EXPERT_RATING']; ?>
-						<br>
-						User Rating: <?php echo $row['USER_RATING']; ?>
+				<a href="product.php?phone=<?php echo preg_replace('/\s/', '', $row['PHONE_NAME']); ?>">
+					<div class="overlay">
+						<div class="text">
+							<?php echo $row['HEADLINE']; ?>
+							<br>
+							Expert Rating: <?php echo $row['EXPERT_RATING']; ?>
+							<br>
+							User Rating: <?php echo $row['USER_RATING']; ?>
+						</div>
 					</div>
-				</div>
+				</a>
 			</div>
+			<br>
+			<center>
+				<h6><?php echo $row['PHONE_NAME']; ?></h6>
+			</center>
         </div>
 		<?php 
 		$count = $count + 1;
