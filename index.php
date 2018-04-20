@@ -41,7 +41,7 @@ EOF;
 	$ret = $db->query($sql);
 	while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
 		if ($count % 5 == 0) {
-			?><div class="row m-3"><?php
+			?><div class="row"><?php
 		} ?>
 		<div class="col">
 			<div class="centerBlock product-img">

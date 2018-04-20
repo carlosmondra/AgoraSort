@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
 <a class="navbar-brand" href="index.php">MarketSort</a>
 <style>
 /* .navbar-brand
