@@ -61,112 +61,6 @@ body{
 	</div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-			<a href="product.php?phone=iPhoneX">
-				<center>
-					<h2>iPhone X</h2>
-				</center>
-			</a>
-			<div class="centerBlock product-img">
-				<img src="img/indexImg/iphonexfinal.png"  class="img-responsive" style="max-height: 100%; max-width: 100%"/>
-				<div class="overlay">
-					<div class="text">
-						Great Camera!
-						<br>
-						Expert Rating:
-						<br>
-						User Rating:
-					</div>
-				</div>
-			</div>
-        </div>
-        <div class="col">
-           <a href="product.php?phone=SamsungS9">
-			<center>
-			<h2>Samsung S9</h2>
-			</center>
-			</a>
-			<div class="centerBlock">
-			<img src="samsung600.png" class="img-responsive" style="max-height: 100%; max-width: 100%">
-			</div>
-        </div>
-		<div class="col">
-			 <a href="product.php?phone=GooglePixel2">
-			<center>
-			<h2>Google Pixel 2</h2></center></a>
-			<div class="centerBlock">
-			<img src="googlepixel2.png" class="img-responsive" style="max-height: 100%; max-width: 100%"/>
-			</div>
-			
-		</div>
-		<div class="col">
-			<a href="product.php?phone=iPhone8">
-			<center>
-			<h2> iPhone 8</h2></center>
-			</a>
-			<div class="centerBlock">
-			<img src="iphone81.png" class="img-responsive" style="max-height: 100%; max-width: 100%"/>
-			</div>
-
-		</div>
-		<div class="col">
-			<a href="product.php?phone=HTC11">
-			 <center>
-			<h2>HTC U11</h2></center>
-			</a>
-			<div class="centerBlock">
-			<img src="htcu11.png" class="img-responsive" style="max-height: 100%; max-width: 100%"/>
-			</div>
-		</div>
-		</div>
-		
-	<div class="row">
-		<div class="col">
-			<a href="product.php?phone=SamsungNote8">
-			<center><h2>Samsung Galaxy Note 8</h2></center>
-			</a>
-			<div class="centerBlock">
-			<img src="note8.png" class="img-responsive" style="max-height: 100%; max-width: 100%"/>
-			</div>
-		</div>
-		<div class="col">
-			<a href="product.php?phone=Huawei">
-			<center>
-			<h2>Huawei Mate 10 Pro</h2></center>
-			</a>
-			<div class="centerBlock">
-			<img src="huawei.png" class="img-responsive" style="max-height: 100%; max-width: 100%"/>
-			</div>
-		</div>
-		<div class="col">
-			<a href="product.php?phone=OnePlus">
-			<center>
-			<h2>OnePlus 5T</h2></center>
-			</a>
-			<div class="centerBlock">
-			<img src="oneplus1.png" class="img-responsive" style="max-height: 100%; max-width: 100%"/>
-			</div>
-		</div>
-		<div class="col">
-			<a href="product.php?phone=Motorola">
-			<center><h2>Moto Z2 Force</h2></center>
-			</a>
-			<div class="centerBlock">
-			<img src="moto.png" class="img-responsive" style="max-height: 100%; max-width: 100%"/>
-			</div>
-		</div>
-		<div class="col">
-			<a href="product.php?phone=LG">
-			<center><h2>LG v30</h2></center>
-			</a>
-			<div class="centerBlock">		
-			<img src="lg.png" class="img-responsive" style="max-height: 100%; max-width: 100%"/>
-			</div>
-		</div>
-		
-</div>
-
 <?php
    class MyDB extends SQLite3 {
       function __construct() {
@@ -176,22 +70,47 @@ body{
    $db = new MyDB();
    if(!$db) {
       echo $db->lastErrorMsg();
-   } else {
-      echo "Opened database successfully<br>";
    }
 
    $sql =<<<EOF
       SELECT * from PHONES;
 EOF;
-
-   $ret = $db->query($sql);
-   while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
-      echo "ID = ". $row['ID'] . "<br>";
-      echo "PHONE NAME = ". $row['PHONE_NAME'] ."<br><br>";
-   }
-   echo "Operation done successfully\n";
-   $db->close();
+	$count = 0;
+	$ret = $db->query($sql);
+	while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
+		if ($count % 5 == 0) {
+			?><div class="row"><?php
+		} ?>
+		<div class="col">
+		<a href="product.php?phone=<?php echo preg_replace('/\s/', '', $row['PHONE_NAME']); ?>">
+			<center>
+				<h2><?php echo $row['PHONE_NAME']; ?></h2>
+			</center>
+		</a>
+		<div class="centerBlock product-img">
+			<img src="<?php echo $row['IMG_URL']; ?>"  class="img-responsive" style="max-height: 100%; max-width: 100%"/>
+			<div class="overlay">
+				<div class="text">
+					<?php echo $row['HEADLINE']; ?>
+					<br>
+					Expert Rating: <?php echo $row['EXPERT_RATING']; ?>
+					<br>
+					User Rating: <?php echo $row['USER_RATING']; ?>
+					</div>
+				</div>
+			</div>
+        </div>
+		<?php 
+		if ($count % 5 == 0) {
+			?></div><?php
+		}
+		$count = $count + 1;
+	}
+	$db->close();
 ?>
+</div>
+
+
 
 
 </body>
