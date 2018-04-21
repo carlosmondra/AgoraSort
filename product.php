@@ -32,7 +32,7 @@
             <!-- Here goes the pictures of the phone -->
             <div id="images-visualization">
                 <?php 
-                    $phone = $_GET["phone"];
+                    $productId = _($_GET["productId"]);
                     include 'with-jquery.php';
                 ?>
             </div>

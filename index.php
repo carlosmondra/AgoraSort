@@ -33,9 +33,11 @@
    if(!$db) {
       echo $db->lastErrorMsg();
    }
+   $testG = "PHONES";
+   $test = _($testG);
 
    $sql =<<<EOF
-      SELECT * from PHONES;
+      SELECT * from $test;
 EOF;
 	$count = 0;
 	$ret = $db->query($sql);
@@ -46,7 +48,7 @@ EOF;
 		<div class="col-lg col-md col-sm-6 col-xs-12">
 			<div class="centerBlock product-img">
 				<img src="<?php echo $row['IMG_URL']; ?>"  class="img-responsive" style="max-width: 100%; height: auto;"/>
-				<a href="product.php?phone=<?php echo preg_replace('/\s/', '', $row['PHONE_NAME']); ?>">
+				<a href="product.php?productId=<?php echo $row['ID']; ?>">
 					<div class="overlay">
 						<div class="text">
 							<?php echo $row['HEADLINE']; ?>

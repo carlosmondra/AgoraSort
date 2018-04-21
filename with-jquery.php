@@ -7,9 +7,24 @@
 </head>
 <body style="padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans'">
 
-    <div>
-        <?php echo "Phone selected: " . $phone; ?>
-    </div>
+    <?php
+        class MyDB extends SQLite3 {
+            function __construct() {
+                $this->open('agora.db');
+            }
+        }
+        $db = new MyDB();
+        if(!$db) {
+            echo $db->lastErrorMsg();
+        }
+
+        $sql =<<<EOF
+            SELECT * from PHONES WHERE ID=$productId;
+EOF;
+        $ret = $db->query($sql);
+        $row = $ret->fetchArray(SQLITE3_ASSOC);
+        echo $row['PHONE_NAME'];
+    ?>
 
     <!-- #region Jssor Slider Begin -->
     <!-- Generator: Jssor Slider Maker -->
