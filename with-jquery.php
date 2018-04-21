@@ -150,20 +150,20 @@ EOF;
         </div>
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
             <div data-p="170.00">
-                <img id="test-image" data-u="image" src="phone_images/iphonex11.png" />
-                <img data-u="thumb" src="phone_images/iphonex1.png" />
+                <img id="test-image" data-u="image" src="phone_images/iphonex1.png" />
+                <img data-u="thumb" src="phone_images/iphonex11.png" />
             </div>
             <div data-p="170.00">
-                <img data-u="image" src="img/032.jpg" />
-                <img data-u="thumb" src="img/032-s190x90.jpg" />
+                <img data-u="image" src="phone_images/iphonex2/032.jpg" />
+                <img data-u="thumb" src="phone_images/iphonex22.jpg" />
             </div>
             <div data-p="170.00">
-                <img data-u="image" src="img/033.jpg" />
-                <img data-u="thumb" src="img/033-s190x90.jpg" />
+                <img data-u="image" src="phone_images/iphonex3.jpg" />
+                <img data-u="thumb" src="phone_images/iphonex33.jpg" />
             </div>
             <div data-p="170.00">
-                <img data-u="image" src="img/034.jpg" />
-                <img data-u="thumb" src="img/034-s190x90.jpg" />
+                <img data-u="image" src="phone_images/iphonex4.jpg" />
+                <img data-u="thumb" src="phone_images/iphonex44.jpg" />
             </div>
             <div data-p="170.00">
                 <img data-u="image" src="img/035.jpg" />
