@@ -7,9 +7,22 @@
 </head>
 <body style="padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans'">
 
-    <div>
-        <?php echo "Phone selected: " . $phone; ?>
-    </div>
+    <?php
+        class MyDB extends SQLite3 {
+            function __construct() {
+                $this->open('agora.db');
+            }
+        }
+        $db = new MyDB();
+        if(!$db) {
+            echo $db->lastErrorMsg();
+        }
+
+        $sql = "SELECT * FROM PHONES WHERE ID=" . $productId;
+        $ret = $db->query($sql);
+        $row = $ret->fetchArray(SQLITE3_ASSOC);
+        // echo $row['PHONE_NAME'];
+    ?>
 
     <!-- #region Jssor Slider Begin -->
     <!-- Generator: Jssor Slider Maker -->
@@ -134,46 +147,23 @@
             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg" />
         </div>
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
-            <div data-p="170.00">
-                <img id="test-image" data-u="image" src="img/031.jpg" />
-                <img data-u="thumb" src="img/031-s190x90.jpg" />
-            </div>
-            <div data-p="170.00">
-                <img data-u="image" src="img/032.jpg" />
-                <img data-u="thumb" src="img/032-s190x90.jpg" />
-            </div>
-            <div data-p="170.00">
-                <img data-u="image" src="img/033.jpg" />
-                <img data-u="thumb" src="img/033-s190x90.jpg" />
-            </div>
-            <div data-p="170.00">
-                <img data-u="image" src="img/034.jpg" />
-                <img data-u="thumb" src="img/034-s190x90.jpg" />
-            </div>
-            <div data-p="170.00">
-                <img data-u="image" src="img/035.jpg" />
-                <img data-u="thumb" src="img/035-s190x90.jpg" />
-            </div>
-            <div data-p="170.00">
-                <img data-u="image" src="img/036.jpg" />
-                <img data-u="thumb" src="img/036-s190x90.jpg" />
-            </div>
-            <div data-p="170.00">
-                <img data-u="image" src="img/037.jpg" />
-                <img data-u="thumb" src="img/037-s190x90.jpg" />
-            </div>
-            <div data-p="170.00">
-                <img data-u="image" src="img/038.jpg" />
-                <img data-u="thumb" src="img/038-s190x90.jpg" />
-            </div>
-            <div data-p="170.00">
-                <img data-u="image" src="img/039.jpg" />
-                <img data-u="thumb" src="img/039-s190x90.jpg" />
-            </div>
-            <div data-p="170.00">
-                <img data-u="image" src="img/040.jpg" />
-                <img data-u="thumb" src="img/040-s190x90.jpg" />
-            </div>
+            <?php 
+                echo $row['IMG_DIR'];
+
+                $fi = new FilesystemIterator($row['IMG_DIR'], FilesystemIterator::SKIP_DOTS);
+                $numOfPics = round(iterator_count($fi) / 2);
+
+                for ($x = 1; $x <= $numOfPics; $x++) {
+                    $picPath = $row['IMG_DIR'] . "/pic" . $x . ".png";
+                    $thumbPath = $row['IMG_DIR'] . "/thumb" . $x . ".png";
+                ?>
+                    <div data-p="170.00">
+                        <img data-u="image" src="<?php echo $picPath; ?>" />
+                        <img data-u="thumb" src="<?php echo $thumbPath; ?>" />
+                    </div>
+                <?php
+                }
+            ?>
         </div>
         <!-- Thumbnail Navigator -->
         <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;bottom:0px;width:980px;height:100px;background-color:#000;" data-autocenter="1" data-scale-bottom="0.75">
