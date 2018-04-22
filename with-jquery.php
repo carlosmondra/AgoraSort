@@ -23,7 +23,7 @@
 EOF;
         $ret = $db->query($sql);
         $row = $ret->fetchArray(SQLITE3_ASSOC);
-        echo $row['PHONE_NAME'];
+        // echo $row['PHONE_NAME'];
     ?>
 
     <!-- #region Jssor Slider Begin -->
