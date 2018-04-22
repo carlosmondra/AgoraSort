@@ -18,9 +18,7 @@
             echo $db->lastErrorMsg();
         }
 
-        $sql =<<<EOF
-            SELECT * from PHONES WHERE ID=$productId;
-EOF;
+        $sql = "SELECT * FROM PHONES WHERE ID=" . $productId;
         $ret = $db->query($sql);
         $row = $ret->fetchArray(SQLITE3_ASSOC);
         // echo $row['PHONE_NAME'];
