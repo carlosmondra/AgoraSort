@@ -29,13 +29,17 @@
 ?>
 
 <div class="list-group">
-    <?php if (true) { ?>
-        <div class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small>3 days ago</small>
+    <?php 
+        for ($x = 0; $x < count($ratings); $x++) {
+    ?>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                    <small>3 days ago</small>
+                </div>
+                <p class="mb-1"><?php echo $row['TRUSTEDVIEWS_SUMM']; ?></p>
             </div>
-            <p class="mb-1"><?php echo $row['TRUSTEDVIEWS_SUMM']; ?></p>
-        </div>
-    <?php } ?>
+    <?php
+        } 
+    ?>
 </div>
