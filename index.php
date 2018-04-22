@@ -41,7 +41,7 @@ EOF;
 	$ret = $db->query($sql);
 	while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
 		if ($count % 5 == 0) {
-			?><div class="row"><?php
+			?><div class="row mb-4"><?php
 		} ?>
 		<div class="col-lg col-md col-sm-6 col-xs-12">
 			<div class="centerBlock product-img">
@@ -58,7 +58,6 @@ EOF;
 					</div>
 				</a>
 			</div>
-			<br>
 			<center>
 				<h6><?php echo $row['PHONE_NAME']; ?></h6>
 			</center>
