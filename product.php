@@ -27,32 +27,32 @@
 </div>
 
 <?php
-    function getSummaryCols($db) {
-        $tablesquery = $db->query("PRAGMA table_info(EXPERT_REVIEWS);");
-        $summary = array();
-        $col = 1;
-        while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
-            if ($col % 2 == 0) {
-                $summary[] = $table['name'];
-            }
-            $col = $col + 1;
-        }
-        return $summary;
-    }
-
     function getRatingCols($db) {
         $tablesquery = $db->query("PRAGMA table_info(EXPERT_REVIEWS);");
         $ratings = array();
         $col = 1;
         while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
-            if ($col % 2 == 1) {
-                if ($table['name'] != 'ID') {
-                    $ratings[] = $table['name'];
-                }
+            if ($col % 2 == 0) {
+                $ratings[] = $table['name'];
             }
             $col = $col + 1;
         }
         return $ratings;
+    }
+
+    function getSummaryCols($db) {
+        $tablesquery = $db->query("PRAGMA table_info(EXPERT_REVIEWS);");
+        $summaries = array();
+        $col = 1;
+        while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
+            if ($col % 2 == 1) {
+                if ($table['name'] != 'ID') {
+                    $summaries[] = $table['name'];
+                }
+            }
+            $col = $col + 1;
+        }
+        return $summaries;
     }
 
     function selectColumns($table, $cols, $productId) {

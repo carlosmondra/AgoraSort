@@ -1,10 +1,14 @@
 <?php
     $ratings = getRatingCols($db);
-    $summary = getSummaryCols($db);
+    $summaries = getSummaryCols($db);
     $sqlRatings = selectColumns("EXPERT_REVIEWS", $ratings, $productId);
-    $sqlSummary = selectColumns("EXPERT_REVIEWS", $summary, $productId);
+    $sqlSummary = selectColumns("EXPERT_REVIEWS", $summaries, $productId);
     echo $sqlRatings;
     echo $sqlSummary;
+    $retRating = $db->query($sqlRatings);
+    $retSummary = $db->query($sqlSummary);
+    $rowRating = $retRating->fetchArray(SQLITE3_ASSOC);
+    $rowSummary = $retSummary->fetchArray(SQLITE3_ASSOC);
     
     /* $ret = $db->query($sql);
     $row = $ret->fetchArray(SQLITE3_ASSOC);
@@ -14,6 +18,14 @@
     } else {
         echo "yes";
     } */
+
+   /*  foreach ($cols as $col) {
+        $sql = $sql . $col . ",";
+    } */
+
+    for ($x = 0; $x < count($ratings); $x++) {
+        echo $rowSummary[$summaries[$x]] . "<br>";
+    }
 ?>
 
 <div class="list-group">
