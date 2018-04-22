@@ -12,11 +12,11 @@
 
   <link rel="stylesheet" href="css/product.css">
 </head>
-<style>
+<!-- <style>
     div.row, div.col {
         border-style: solid;
     }
-</style>
+</style> -->
 <body>
   
   <!--Navigation bar-->
@@ -30,25 +30,23 @@
     <div class="row m-5">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <!-- Here goes the pictures of the phone -->
-            <div id="images-visualization">
-                <?php 
-                    $productId = _($_GET["productId"]);
-                    include 'with-jquery.php';
-                ?>
-            </div>
+            <?php 
+                $productId = _($_GET["productId"]);
+                include 'with-jquery.php';
+            ?>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <!-- Here goes the user reviews visualization -->
-            <div id="rating-visualization">
-                <?php
-                    include "rating.php";
-                ?>
-            </div>
+            <?php
+                include "rating.php";
+            ?>
         </div>
     </div>
-    <div class="row">
+    <div class="row m-5">
         <div class="col">
-            <!-- Websites for the product -->
+            <?php
+                include "expertReviews.php";
+            ?>
         </div>
     </div>
 </div>

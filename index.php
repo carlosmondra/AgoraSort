@@ -33,12 +33,8 @@
    if(!$db) {
       echo $db->lastErrorMsg();
    }
-   $testG = "PHONES";
-   $test = _($testG);
-
-   $sql =<<<EOF
-      SELECT * from $test;
-EOF;
+   
+   	$sql = "SELECT * FROM PHONES";
 	$count = 0;
 	$ret = $db->query($sql);
 	while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
