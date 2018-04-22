@@ -26,6 +26,45 @@
     ?>
 </div>
 
+<?php
+    function getSummaryCols($db) {
+        $tablesquery = $db->query("PRAGMA table_info(EXPERT_REVIEWS);");
+        $summary = array();
+        $col = 1;
+        while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
+            if ($col % 2 == 0) {
+                $summary[] = $table['name'];
+            }
+            $col = $col + 1;
+        }
+        return $summary;
+    }
+
+    function getRatingCols($db) {
+        $tablesquery = $db->query("PRAGMA table_info(EXPERT_REVIEWS);");
+        $ratings = array();
+        $col = 1;
+        while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
+            if ($col % 2 == 1) {
+                if ($table['name'] != 'ID') {
+                    $ratings[] = $table['name'];
+                }
+            }
+            $col = $col + 1;
+        }
+        return $ratings;
+    }
+
+    function selectColumns($table, $cols, $productId) {
+        $sql = "SELECT ";
+        foreach ($cols as $col) {
+            $sql = $sql . $col . ",";
+        }
+        $sql = substr($sql, 0, -1);
+        return $sql . " FROM " . $table . " WHERE ID=" . $productId;
+    }
+?>
+
 <div class="container-fluid">
     <div class="row m-5">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
