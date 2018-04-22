@@ -74,7 +74,7 @@ CREATE TABLE EXPERT_REVIEWS(
    EXPERTREVIEWS_SUMM TEXT
 );
 
-INSERT INTO EXPERT_REVIEWS VALUES (1, 90, "The best iPhone I’ve ever used and one of the most exciting phones of 2017. People will baulk at the price and make silly jokes about the notch, but if you’re happy to spend then you won’t be disappointed.", 90, "The iPhone X was a huge gamble from Apple, but one that really paid off. Losing the home button and altering the design was a dangerous move, but one that was sorely needed after years of similarity and the premium design, extra power, all-screen front mix together to create - by far - the best iPhone Apple's ever made. It's impossible to give a perfect score to something that costs this much - but this is the closest to smartphone perfection Apple has ever got.", 90,"CNET",90,"THE VERGE",0,"Android Authority",90,"Engadget",90,"Digital Trends",80,"Alpha",100,"Pocket-Lint",4,"Expert Reviews");
+
 
 CREATE TABLE USER_REVIEWS(
    ID INT PRIMARY KEY NOT NULL,
