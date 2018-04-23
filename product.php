@@ -33,7 +33,10 @@
     } else {
         echo "nope";
     }
+    $productId = $_GET["productId"];
     $sql = "SELECT * FROM PHONES WHERE ID=" . $productId;
+    echo "<br>";
+    echo $sql;
     $result = pg_query($conn, $sql);
     $row = pg_fetch_assoc($result);  
     var_dump($result);      
