@@ -1,43 +1,20 @@
 <?php
-    $ratings = getRatingCols($db);
-    $summaries = getSummaryCols($db);
-    $sqlRatings = selectColumns("EXPERT_REVIEWS", $ratings, $productId);
-    $sqlSummary = selectColumns("EXPERT_REVIEWS", $summaries, $productId);
-    echo $sqlRatings;
-    echo $sqlSummary;
-    $retRating = $db->query($sqlRatings);
-    $retSummary = $db->query($sqlSummary);
-    $rowRating = $retRating->fetchArray(SQLITE3_ASSOC);
-    $rowSummary = $retSummary->fetchArray(SQLITE3_ASSOC);
-    
-    /* $ret = $db->query($sql);
-    $row = $ret->fetchArray(SQLITE3_ASSOC);
-
-    if ($row['ANDROIDAUTHORITY_SUMM'] !== NULL) {
-        echo "damn";
-    } else {
-        echo "yes";
-    } */
-
-   /*  foreach ($cols as $col) {
-        $sql = $sql . $col . ",";
-    } */
-
-    for ($x = 0; $x < count($ratings); $x++) {
-        echo $rowSummary[$summaries[$x]] . "<br>";
-    }
+    include "DBConnect.php";
+    $resSummaries = pg_query($conn, "select * from expert_summaries where id=" . $productId);
+    $resRatings = pg_query($conn, "select * from expert_ratings where id=" . $productId);
+    $cols = pg_num_fields($resSummaries);
 ?>
 
 <div class="list-group">
     <?php 
-        for ($x = 0; $x < count($ratings); $x++) {
+        for ($x = 1; $x < $cols; $x++) {
     ?>
             <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">List group item heading</h5>
-                    <small>3 days ago</small>
+                    <small><?php echo pg_fetch_result($resRatings, 0, $x); ?></small>
                 </div>
-                <p class="mb-1"><?php echo $row['TRUSTEDVIEWS_SUMM']; ?></p>
+                <p class="mb-1"><?php echo pg_fetch_result($resSummaries, 0, $x); ?></p>
             </div>
     <?php
         } 

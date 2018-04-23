@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Nuzar</title>
+  <title>MarketSort</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -18,6 +18,13 @@
     }
 </style> -->
 <body>
+    <?php
+        $productId = $_GET["productId"];
+        include "DBConnect.php";
+        $sql = "select * from phones where id=" . $productId;
+        $result = pg_query($conn, $sql);
+        $row = pg_fetch_assoc($result); 
+    ?>
   
   <!--Navigation bar-->
 <div id="nav-placeholder">
@@ -27,30 +34,29 @@
 </div>
 
 <?php
-    function getRatingCols($db) {
-        $tablesquery = $db->query("PRAGMA table_info(EXPERT_REVIEWS);");
+    echo $row["phone_name"];
+?>
+
+<?php
+    function getRatingCols($conn) {
         $ratings = array();
-        $col = 1;
-        while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
-            if ($col % 2 == 0) {
-                $ratings[] = $table['name'];
-            }
-            $col = $col + 1;
+        $res = pg_query($conn, "select * from expert_ratings where id = 1");
+        $i = pg_num_fields($res);
+        for ($j = 0; $j < $i; $j++) {
+            $ratings[] = pg_field_name($res, $j);
         }
         return $ratings;
     }
 
-    function getSummaryCols($db) {
-        $tablesquery = $db->query("PRAGMA table_info(EXPERT_REVIEWS);");
+    function getSummaryCols($conn) {
         $summaries = array();
-        $col = 1;
-        while ($table = $tablesquery->fetchArray(SQLITE3_ASSOC)) {
-            if ($col % 2 == 1) {
-                if ($table['name'] != 'ID') {
-                    $summaries[] = $table['name'];
-                }
+        $res = pg_query($conn, "select * from expert_summaries where id = 1");
+        $i = pg_num_fields($res);
+        for ($j = 0; $j < $i; $j++) {
+            $fieldname = pg_field_name($res, $j);
+            if ($fieldname != 'ID') {
+                $summaries[] = $fieldname;
             }
-            $col = $col + 1;
         }
         return $summaries;
     }
@@ -70,7 +76,6 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <!-- Here goes the pictures of the phone -->
             <?php 
-                $productId = $_GET["productId"];
                 include 'with-jquery.php';
             ?>
         </div>

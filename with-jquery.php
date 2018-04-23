@@ -7,13 +7,6 @@
 </head>
 <body style="padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans'">
 
-    <?php
-        include "DBConnect.php";
-        $sql = "select * from phones where id=" . $productId;
-        $result = pg_query($conn, $sql);
-        $row = pg_fetch_assoc($result);        
-    ?>
-
     <!-- #region Jssor Slider Begin -->
     <!-- Generator: Jssor Slider Maker -->
     <!-- Source: https://www.jssor.com -->
