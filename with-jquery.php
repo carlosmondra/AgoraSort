@@ -8,9 +8,8 @@
 <body style="padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans'">
 
     <?php
+        include "DBConnect.php";
         $sql = "SELECT * FROM PHONES WHERE ID=" . $productId;
-        $connStr = "host=localhost port=5432 dbname=agorasort user=postgres password=mondra";
-        $conn = pg_connect($connStr);
         $result = pg_query($conn, $sql);
         $row = pg_fetch_assoc($result);        
     ?>

@@ -24,8 +24,7 @@
 
 <div class="container-fluid">
 <?php
-	$connStr = "host=localhost port=5432 dbname=agorasort user=postgres password=mondra";
-	$conn = pg_connect($connStr);
+	include "DBConnect.php";
 	$result = pg_query($conn, "select * from phones");
 	$count = 0;
 	while ($row = pg_fetch_assoc($result)) {
