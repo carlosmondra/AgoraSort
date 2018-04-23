@@ -28,11 +28,15 @@
 
 <?php
     include "DBConnect.php";
-    echo "here";
+    if ($conn) {
+        echo "yes";
+    } else {
+        echo "nope";
+    }
     $sql = "SELECT * FROM PHONES WHERE ID=" . $productId;
     $result = pg_query($conn, $sql);
     $row = pg_fetch_assoc($result);  
-    var_dump($row);      
+    var_dump($result);      
 ?>
 
 <?php
