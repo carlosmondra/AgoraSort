@@ -8,20 +8,11 @@
 <body style="padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans'">
 
     <?php
-        class MyDB extends SQLite3 {
-            function __construct() {
-                $this->open('agora.db');
-            }
-        }
-        $db = new MyDB();
-        if(!$db) {
-            echo $db->lastErrorMsg();
-        }
-
         $sql = "SELECT * FROM PHONES WHERE ID=" . $productId;
-        $ret = $db->query($sql);
-        $row = $ret->fetchArray(SQLITE3_ASSOC);
-        // echo $row['PHONE_NAME'];
+        $connStr = "host=localhost port=5432 dbname=agorasort user=postgres password=mondra";
+        $conn = pg_connect($connStr);
+        $result = pg_query($conn, $sql);
+        $row = pg_fetch_assoc($result);        
     ?>
 
     <!-- #region Jssor Slider Begin -->
@@ -148,14 +139,12 @@
         </div>
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
             <?php 
-                echo $row['IMG_DIR'];
-
-                $fi = new FilesystemIterator($row['IMG_DIR'], FilesystemIterator::SKIP_DOTS);
+                $fi = new FilesystemIterator($row['img_dir'], FilesystemIterator::SKIP_DOTS);
                 $numOfPics = round(iterator_count($fi) / 2);
 
                 for ($x = 1; $x <= $numOfPics; $x++) {
-                    $picPath = $row['IMG_DIR'] . "/pic" . $x . ".png";
-                    $thumbPath = $row['IMG_DIR'] . "/thumb" . $x . ".png";
+                    $picPath = $row['img_dir'] . "/pic" . $x . ".png";
+                    $thumbPath = $row['img_dir'] . "/thumb" . $x . ".png";
                 ?>
                     <div data-p="170.00">
                         <img data-u="image" src="<?php echo $picPath; ?>" />
@@ -163,6 +152,7 @@
                     </div>
                 <?php
                 }
+                pg_close($conn);
             ?>
         </div>
         <!-- Thumbnail Navigator -->

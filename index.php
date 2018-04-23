@@ -57,6 +57,7 @@
 			?></div><?php
 		}
 	}
+	pg_close($conn);
 ?>
 </div>
 
