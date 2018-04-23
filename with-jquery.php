@@ -9,8 +9,7 @@
 
     <?php
         include "DBConnect.php";
-        echo "here";
-        $sql = "SELECT * FROM PHONES WHERE id=" . $productId;
+        $sql = "select * from phones where id=" . $productId;
         $result = pg_query($conn, $sql);
         $row = pg_fetch_assoc($result);        
     ?>
