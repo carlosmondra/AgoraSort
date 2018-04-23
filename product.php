@@ -27,6 +27,14 @@
 </div>
 
 <?php
+    include "DBConnect.php";
+    echo "here";
+    $sql = "SELECT * FROM PHONES WHERE ID=" . $productId;
+    $result = pg_query($conn, $sql);
+    $row = pg_fetch_assoc($result);        
+?>
+
+<?php
     function getRatingCols($db) {
         $tablesquery = $db->query("PRAGMA table_info(EXPERT_REVIEWS);");
         $ratings = array();
@@ -65,30 +73,7 @@
     }
 ?>
 
-<div class="container-fluid">
-    <div class="row m-5">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <!-- Here goes the pictures of the phone -->
-            <?php 
-                $productId = _($_GET["productId"]);
-                include 'with-jquery.php';
-            ?>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <!-- Here goes the user reviews visualization -->
-            <?php
-                include "rating.php";
-            ?>
-        </div>
-    </div>
-    <div class="row m-5">
-        <div class="col">
-            <?php
-                include "expertReviews.php";
-            ?>
-        </div>
-    </div>
-</div>
+
 
 </body>
 </html>
