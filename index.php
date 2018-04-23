@@ -24,40 +24,31 @@
 
 <div class="container-fluid">
 <?php
-   class MyDB extends SQLite3 {
-      function __construct() {
-         $this->open('agora.db');
-      }
-   }
-   $db = new MyDB();
-   if(!$db) {
-      echo $db->lastErrorMsg();
-   }
-   
-   	$sql = "SELECT * FROM PHONES";
+	$connStr = "host=localhost port=5432 dbname=agorasort user=postgres password=mondra";
+	$conn = pg_connect($connStr);
+	$result = pg_query($conn, "select * from phones");
 	$count = 0;
-	$ret = $db->query($sql);
-	while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
+	while ($row = pg_fetch_assoc($result)) {
 		if ($count % 5 == 0) {
 			?><div class="row mb-4"><?php
 		} ?>
 		<div class="col-lg col-md col-sm-6 col-xs-12">
 			<div class="centerBlock product-img">
-				<img src="<?php echo $row['IMG_URL']; ?>"  class="img-responsive" style="max-width: 100%; height: auto;"/>
-				<a href="product.php?productId=<?php echo $row['ID']; ?>">
+				<img src="<?php echo $row['img_url']; ?>"  class="img-responsive" style="max-width: 100%; height: auto;"/>
+				<a href="product.php?productId=<?php echo $row['id']; ?>">
 					<div class="overlay">
 						<div class="text">
-							<?php echo $row['HEADLINE']; ?>
+							<?php echo $row['headline']; ?>
 							<br>
-							Expert Rating: <?php echo $row['EXPERT_RATING']; ?>
+							Expert Rating: <?php echo $row['expert_rating']; ?>
 							<br>
-							User Rating: <?php echo $row['USER_RATING']; ?>
+							User Rating: <?php echo $row['user_rating']; ?>
 						</div>
 					</div>
 				</a>
 			</div>
 			<center>
-				<h6><?php echo $row['PHONE_NAME']; ?></h6>
+				<h6><?php echo $row['phone_name']; ?></h6>
 			</center>
         </div>
 		<?php 
@@ -66,7 +57,6 @@
 			?></div><?php
 		}
 	}
-	$db->close();
 ?>
 </div>
 
