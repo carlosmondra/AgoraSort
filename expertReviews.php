@@ -5,18 +5,16 @@
     $cols = pg_num_fields($resSummaries);
 
     $fieldNames = array(
-        "TRUSTEDVIEWS_SUMM" => "TRUSTED VIEWS",
-        "TECHRADAR_SUMM" => "TECHRADAR",
-        "CNET_SUMM" => "CNET",
-        "THEVERGE_SUMM" => "THE VERGE",
-
-        "ANDROIDAUTHORITY_SUMM" => "ANDROID AUTHORITY",
-        "ENGADGET_SUMM" => "ENGADGET",
-        "DIGITALTRENDS_SUMM" => "DIGITAL TRENDS",
-        "ALPHA_SUMM" => "ALPHA",
-
-        "POCKETLINT_SUMM" => "POCKETLINT",
-        "EXPERTREVIEWS_SUMM" => "EXPERT REVIEWS"
+        0 => "TRUSTED VIEWS",
+        1 => "TECH RADAR",
+        2 => "CNET",
+        3 => "THE VERGE",
+        4 => "ANDROID AUTHORITY",
+        5 => "ENGADGET",
+        6 => "DIGITAL TRENDS",
+        7 => "ALPHA",
+        8 => "POCKET LINT",
+        9 => "EXPERT REVIEWS"
     );
 ?>
 
@@ -29,7 +27,7 @@
     ?>
                 <div class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1"><?php echo pg_field_name($resSummaries, $x); ?></h5>
+                        <h5 class="mb-1"><?php echo $fieldNames[$x]; ?></h5>
                         <?php if ($rating) { ?>
                             <small><?php echo "Score " . $rating . "%"; ?></small>
                         <?php } ?>
