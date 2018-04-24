@@ -8,15 +8,15 @@
         "TRUSTEDVIEWS_SUMM" => "TRUSTED VIEWS",
         "TECHRADAR_SUMM" => "TECHRADAR",
         "CNET_SUMM" => "CNET",
-        "THEVERGE_SUMM" => "THEVERGE",
+        "THEVERGE_SUMM" => "THE VERGE",
 
-        "ANDROIDAUTHORITY_SUMM" => "bar",
-        "ENGADGET_SUMM" => "foo",
-        "DIGITALTRENDS_SUMM" => "bar",
-        "ALPHA_SUMM" => "foo",
+        "ANDROIDAUTHORITY_SUMM" => "ANDROID AUTHORITY",
+        "ENGADGET_SUMM" => "ENGADGET",
+        "DIGITALTRENDS_SUMM" => "DIGITAL TRENDS",
+        "ALPHA_SUMM" => "ALPHA",
 
-        "POCKETLINT_SUMM" => "bar",
-        "EXPERTREVIEWS_SUMM" => "foo",
+        "POCKETLINT_SUMM" => "POCKETLINT",
+        "EXPERTREVIEWS_SUMM" => "EXPERT REVIEWS"
     );
 ?>
 

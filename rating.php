@@ -121,14 +121,14 @@ body {
         .attr("height", y.bandwidth())
         .attr("y", function(d) { return y(d.reviewCat); })
         .attr("width", function(d) { return x(d.numReviews); })
-        .on("mousemove", function(d){
-            tooltip
-              .style("left", d3.event.pageX - 50 + "px")
-              .style("top", d3.event.pageY - 70 + "px")
-              .style("display", "inline-block")
-              .html((d.reviewCat) + "<br>" + (d.numReviews) + " user reviews");
-        })
-        .on("mouseout", function(d){ tooltip.style("display", "none");});
+        // .on("mousemove", function(d){
+        //     tooltip
+        //       .style("left", d3.event.pageX - 50 + "px")
+        //       .style("top", d3.event.pageY - 70 + "px")
+        //       .style("display", "inline-block")
+        //       .html((d.reviewCat) + "<br>" + (d.numReviews) + " user reviews");
+        // })
+        // .on("mouseout", function(d){ tooltip.style("display", "none");});
   }
 
 

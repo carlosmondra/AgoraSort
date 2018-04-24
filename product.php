@@ -73,14 +73,16 @@
 
 <div class="container-fluid">
     <div class="row m-5">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col">
             <!-- Here goes the pictures of the phone -->
             <?php 
                 include 'with-jquery.php';
             ?>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <!-- Here goes the user reviews visualization -->
+    </div>
+    <div class="row m-5">
+    <div class="col">
+        <!-- Here goes the user reviews visualization -->
             <?php
                 include "rating.php";
             ?>
