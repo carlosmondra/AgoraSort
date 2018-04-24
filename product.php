@@ -33,9 +33,17 @@
     ?>
 </div>
 
-<?php
-    echo $row["phone_name"];
-?>
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <center><h2>
+            <?php
+                echo $row["phone_name"];
+            ?>
+            </h2></center>
+        </div>
+    </div>
+</div>
 
 <?php
     function getRatingCols($conn) {

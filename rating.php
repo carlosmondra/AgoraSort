@@ -35,24 +35,36 @@ body {
 </style>
 <body>
   <?php
-      // class MyDB extends SQLite3 {
-      //     function __construct() {
-      //         $this->open('agora.db');
-      //     }
-      // }
-      // $db = new MyDB();
-      // if(!$db) {
-      //     echo $db->lastErrorMsg();
-      // }
+      include "DBConnect.php";
+      $userRatings = pg_query($conn, "select * from user_reviews where id=" . $productId);
+      $expertRatings = pg_query($conn, "select * from expert_ratings where id=" . $productId);
+      $colsUser = pg_num_fields($userRatings);
+      $colsExpert = pg_num_fields($expertRatings);
 
-      // $sql = "SELECT * FROM PHONES WHERE ID=" . $productId;
-      // $ret = $db->query($sql);
-      // $row = $ret->fetchArray(SQLITE3_ASSOC);
-      // // echo $row['PHONE_NAME'];
+      $uRatings = array();
+
+      for ($x = 1; $x < $colsUser; $x++) {
+        $col = 4 - (($x - 1) % 5);
+        $uRatings[$col] = $uRatings[$col] + pg_fetch_result($userRatings, 0, $x);
+      }
   ?>
 
-  <svg id="svg1" width="500" height="500"></svg>
-  <svg id="svg2" width="500" height="500"></svg>
+  <div class="container-fluid">
+    <div class="row m-2">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <center><h3>
+              User Ratings
+              <svg id="svg1" width="500" height="300"></svg>
+            </h3></center>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <center><h3>
+              Expert Ratings
+              <svg id="svg2" width="500" height="300"></svg>
+            </h3></center>
+        </div>
+    </div>
+  </div>
 
   <script src="//d3js.org/d3.v4.js"></script>
   <script>
@@ -60,11 +72,11 @@ body {
     
       
   data_user = [
-    {"reviewCat": "0-19%", "numReviews": 18000},
-    {"reviewCat": "20-39%", "numReviews": 17000},
-    {"reviewCat": "40-59%", "numReviews": 80000},
-    {"reviewCat": "60-79%", "numReviews": 55000},
-    {"reviewCat": "80-100%", "numReviews": 1000000}
+    {"reviewCat": "0-19%", "numReviews": <?php echo $uRatings[0] ?>},
+    {"reviewCat": "20-39%", "numReviews": <?php echo $uRatings[1] ?>},
+    {"reviewCat": "40-59%", "numReviews": <?php echo $uRatings[2] ?>},
+    {"reviewCat": "60-79%", "numReviews": <?php echo $uRatings[3] ?>},
+    {"reviewCat": "80-100%", "numReviews": <?php echo $uRatings[4] ?>}
   ]
   const svg1 = d3.select("#svg1");
 
