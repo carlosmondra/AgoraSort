@@ -42,10 +42,28 @@ body {
       $colsExpert = pg_num_fields($expertRatings);
 
       $uRatings = array();
-
       for ($x = 1; $x < $colsUser; $x++) {
         $col = 4 - (($x - 1) % 5);
         $uRatings[$col] = $uRatings[$col] + pg_fetch_result($userRatings, 0, $x);
+      }
+
+      $eRatings = array();
+      for ($y = 0; $y < 5; $y++) {
+        $eRatings[$y] = 0;
+      }
+      for ($x = 1; $x < $colsExpert; $x++) {
+        $rating = pg_fetch_result($expertRatings, 0, $x);
+        if ($rating >= 80) {
+          $eRatings[4] = $eRatings[4] + 1;
+        } elseif ($rating >= 60) {
+          $eRatings[3] = $eRatings[3] + 1;
+        } elseif ($rating >= 40) {
+          $eRatings[2] = $eRatings[2] + 1;
+        } elseif ($rating >= 20) {
+          $eRatings[1] = $eRatings[1] + 1;
+        } else {
+          $eRatings[0] = $eRatings[0] + 1;
+        }
       }
   ?>
 
@@ -81,11 +99,11 @@ body {
   const svg1 = d3.select("#svg1");
 
   data_expert = [
-     {"reviewCat": "0-19%", "numReviews": 10},
-    {"reviewCat": "20-39%", "numReviews": 20},
-    {"reviewCat": "40-59%", "numReviews": 30},
-    {"reviewCat": "60-79%", "numReviews": 40},
-    {"reviewCat": "80-100%", "numReviews": 50}
+     {"reviewCat": "0-19%", "numReviews": <?php echo $eRatings[0] ?>},
+    {"reviewCat": "20-39%", "numReviews": <?php echo $eRatings[1] ?>},
+    {"reviewCat": "40-59%", "numReviews": <?php echo $eRatings[2] ?>},
+    {"reviewCat": "60-79%", "numReviews": <?php echo $eRatings[3] ?>},
+    {"reviewCat": "80-100%", "numReviews": <?php echo $eRatings[4] ?>}
   ]
   const svg2 = d3.select("#svg2");
 
