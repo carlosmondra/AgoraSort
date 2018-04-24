@@ -13,8 +13,7 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
-  
+<body>  
   <!--Navigation bar-->
 	<div id="nav-placeholder">
 		<?php
@@ -25,6 +24,32 @@
 <div class="container-fluid">
 <?php
 	include "DBConnect.php";
+
+	function getUserRating($conn, $id) {
+		$userRatings = pg_query($conn, "select * from user_reviews where id=" . $id);
+		$colsUser = pg_num_fields($userRatings);
+
+		$finalUserRating = 0;
+		$totalRatings = 0;
+		for ($x = 1; $x < $colsUser; $x++) {
+			$currentRatings = pg_fetch_result($userRatings, 0, $x);
+			$totalRatings = $totalRatings + $currentRatings;
+			$weight = 5 - (($x - 1) % 5);
+			$finalUserRating = $finalUserRating + $currentRatings * $weight * 20;
+		}
+		return round($finalUserRating / $totalRatings);
+	}
+
+	function getExpertRating($conn, $id) {
+		$expertRatings = pg_query($conn, "select * from expert_ratings where id=" . $id);
+		$colsExpert = pg_num_fields($expertRatings);
+		$finalExpertRating = 0;
+		for ($x = 1; $x < $colsExpert; $x++) {
+			$finalExpertRating = $finalExpertRating + pg_fetch_result($expertRatings, 0, $x);
+		}
+		return round($finalExpertRating / $colsExpert);
+	}
+
 	$result = pg_query($conn, "select * from phones");
 	$count = 0;
 	while ($row = pg_fetch_assoc($result)) {
@@ -39,9 +64,9 @@
 						<div class="text">
 							<?php echo $row['headline']; ?>
 							<br>
-							Expert Rating: <?php echo $row['expert_rating']; ?>
+							Expert Rating: <?php echo getExpertRating($conn, $row['id']); ?>
 							<br>
-							User Rating: <?php echo $row['user_rating']; ?>
+							User Rating: <?php echo getUserRating($conn, $row['id']); ?>
 						</div>
 					</div>
 				</a>
