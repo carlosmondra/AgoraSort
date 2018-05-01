@@ -50,6 +50,17 @@ UPDATE PHONES SET IMG_DIR = 'img/prodImg/8' WHERE ID = 8;
 UPDATE PHONES SET IMG_DIR = 'img/prodImg/9' WHERE ID = 9;
 UPDATE PHONES SET IMG_DIR = 'img/prodImg/10' WHERE ID = 10;
 
+UPDATE PHONES SET HEADLINE = 'The best iPhone I''ve ever used and one of the most exciting phones of 2017.' WHERE ID = 1;
+UPDATE PHONES SET HEADLINE = 'Samsung is once again likely to have one of the best Android phones of the year.' WHERE ID = 2;
+UPDATE PHONES SET HEADLINE = 'The best small Android phone you can buy.' WHERE ID = 3;
+UPDATE PHONES SET HEADLINE = 'Great camera, lots of power and a nice screen' WHERE ID = 4;
+UPDATE PHONES SET HEADLINE = 'The U11 is an excellent all-round smartphone that will meet 99% of people''s needs.' WHERE ID = 5;
+UPDATE PHONES SET HEADLINE = 'A worthy comeback for the Galaxy Note brand.' WHERE ID = 6;
+UPDATE PHONES SET HEADLINE = 'The Huawei Mate 10 Pro offers buyers fantastic hardware and OK software.' WHERE ID = 7;
+UPDATE PHONES SET HEADLINE = 'OnePlus keeps on churning out the best value-for-money phones around.' WHERE ID = 8;
+UPDATE PHONES SET HEADLINE = 'The Moto Z2 Force is one of the most interesting phones around and is a great choice for accident-prone buyers' WHERE ID = 9;
+UPDATE PHONES SET HEADLINE = 'The LG V30 is a confident step forward' WHERE ID = 10;
+
 CREATE TABLE EXPERT_REVIEWS(
    ID INT PRIMARY KEY NOT NULL,
    TRUSTEDVIEWS_RATING INT,

@@ -61,12 +61,13 @@
 				<img src="<?php echo $row['img_url']; ?>"  class="img-responsive" style="max-width: 100%; height: auto;"/>
 				<a href="product.php?productId=<?php echo $row['id']; ?>">
 					<div class="overlay">
-						<div class="text">
+						<div class="text">							
+							<b>Expert Rating: <?php echo getExpertRating($conn, $row['id']); ?>
+							<br>
+							User Rating: <?php echo getUserRating($conn, $row['id']); ?></b>
+							<br>
+							<br>
 							<?php echo $row['headline']; ?>
-							<br>
-							Expert Rating: <?php echo getExpertRating($conn, $row['id']); ?>
-							<br>
-							User Rating: <?php echo getUserRating($conn, $row['id']); ?>
 						</div>
 					</div>
 				</a>

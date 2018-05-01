@@ -34,18 +34,20 @@
             $rating = pg_fetch_result($resRatings, 0, $x);
             $summary = pg_fetch_result($resSummaries, 0, $x);
             if ($rating and $summary) {
-    ?>
-                <div class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1"><?php echo $fieldNames[$x]; ?></h5>
-                        <?php if ($rating) { ?>
-                            <small><?php echo "Score " . $rating . "%"; ?></small>
+                $linkToReview = "http://www.google.com/search?q=" . str_replace(" ", "+", $fieldNames[$x]) . "+" . $row["phone_name"] . "&btnI"
+    ?>          <a href="<?php echo $linkToReview ?>">
+                    <div class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"><?php echo $fieldNames[$x]; ?></h5>
+                            <?php if ($rating) { ?>
+                                <small style="font-size: 20px;"><?php echo "Score " . $rating . "%"; ?></small>
+                            <?php } ?>
+                        </div>
+                        <?php if ($summary) { ?>
+                            <p class="mb-1"><?php echo $summary; ?></p>
                         <?php } ?>
                     </div>
-                    <?php if ($summary) { ?>
-                        <p class="mb-1"><?php echo $summary; ?></p>
-                    <?php } ?>
-                </div>
+                </a>
     <?php
             }
         }
