@@ -35,7 +35,7 @@
             $summary = pg_fetch_result($resSummaries, 0, $x);
             if ($rating and $summary) {
                 $linkToReview = "http://www.google.com/search?q=" . str_replace(" ", "+", $fieldNames[$x]) . "+" . $row["phone_name"] . "&btnI"
-    ?>          <a href="<?php echo $linkToReview ?>">
+    ?>          <a href="<?php echo $linkToReview ?>" class="link-summaries">
                     <div class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1"><?php echo $fieldNames[$x]; ?></h5>
