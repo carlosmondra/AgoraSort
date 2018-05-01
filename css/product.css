@@ -5,3 +5,36 @@
 a.link-summaries {
     text-decoration: none;
 }
+
+body {
+    margin: 15px;
+    background-color: #F1F3F3    
+  }
+  .bar {
+    fill: #0d46a0;
+  }
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #8eb6f6;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+  }
+  .x path {
+    display: none;
+  }
+  .y {
+    font-size:16px;
+  }
+
+.toolTip {
+    /* z-index: 1; */
+    position: absolute;
+    display: none;
+    min-width: 80px;
+    height: auto;
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #6F257F;
+    padding: 14px;
+    text-align: center;
+  }

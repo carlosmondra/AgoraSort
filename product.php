@@ -45,6 +45,8 @@
     </div>
 </div>
 
+<div class="toolTip"></div>
+
 <?php
     function getRatingCols($conn) {
         $ratings = array();
@@ -104,7 +106,6 @@
         </div>
     </div>
 </div>
-
 
 </body>
 </html>

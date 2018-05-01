@@ -1,38 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
-body {
-  margin: 15px;
-  background-color: #F1F3F3    
-}
-.bar {
-  fill: #0d46a0;
-}
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #8eb6f6;
-  stroke-width: 1px;
-  shape-rendering: crispEdges;
-}
-.x path {
-  display: none;
-}
-.y {
-  font-size:16px;
-}
 
-.toolTip {
-  position: absolute;
-  display: none;
-  min-width: 80px;
-  height: auto;
-  background: none repeat scroll 0 0 #ffffff;
-  border: 1px solid #6F257F;
-  padding: 14px;
-  text-align: center;
-}
-</style>
 <body>
   <?php
       include "DBConnect.php";
@@ -116,7 +84,9 @@ body {
     var width = +svg.attr("width") - margin.left - margin.right;
     var height = +svg.attr("height") - margin.top - margin.bottom;
       
-    var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+    // var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+    var tooltip = d3.select(".toolTip")
+    // console.log("test")
       
     var x = d3.scaleLinear().range([0, width]);
     var y = d3.scaleBand().range([height, 0]);
@@ -158,7 +128,9 @@ body {
         //       .style("display", "inline-block")
         //       .html((d.reviewCat) + "<br>" + (d.numReviews) + " user reviews");
         // })
-        // .on("mouseout", function(d){ tooltip.style("display", "none");});
+        // .on("mouseout", function(d){ tooltip.style("display", "none");})
+        .append("title")
+        .text(d => d.reviewCat + "\n" + d.numReviews + " reviews")
   }
 
 
