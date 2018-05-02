@@ -36,6 +36,20 @@
   ?>
 
   <div class="container-fluid">
+    <div class="row mb-4">
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <center>
+              <h3>Average User Rating</h3>
+              <svg id="svg-circle-1" width="500" height="110"></svg>
+            </center>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <center>
+              <h3>Average Expert Rating</h3>
+              <svg id="svg-circle-2" width="500" height="110"></svg>
+            </center>
+          </div>
+    </div>
     <div class="row m-2">
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <center><h3>
@@ -77,7 +91,8 @@
 
   createVis(data_user, svg1)
   createVis(data_expert, svg2)
-
+  createCircle(<?php echo getUserRating($conn, $productId); ?>, d3.select("#svg-circle-1"))
+  createCircle(<?php echo getExpertRating($conn, $productId); ?>, d3.select("#svg-circle-2"))
 
   function createVis(data, svg) {
     var margin = {top: 20, right: 20, bottom: 30, left: 80};
@@ -132,6 +147,44 @@
         .append("title")
         .text(d => d.reviewCat + "\n" + d.numReviews + " reviews")
   }
+
+  function createCircle (rating, svg) {
+	var circleData = [
+		{ "cx": 250, "cy": 55, "radius": 50, "rating" : rating+"%" }];
+	 
+	 //Create the SVG Viewport
+	 var svgContainer = svg
+
+	//Add circles to the svgContainer
+	var circles = svgContainer.selectAll("circle")
+		.data(circleData)
+		.enter()
+		.append("circle");
+
+	//Add the circle attributes
+	var circleAttributes = circles
+		.attr("cx", function (d) { return d.cx; })
+		.attr("cy", function (d) { return d.cy; })
+		.attr("r", function (d) { return d.radius; })
+		.style("fill", "#d7def4" )
+		.style("stroke", "#0d46a0")
+		.style("stroke-width", 8)
+
+	//Add the SVG Text Element to the svgContainer
+	var text = svgContainer.selectAll("text")
+		.data(circleData)
+		.enter()
+		.append("text");
+
+	//Add SVG Text Element Attributes
+	var textLabels = text
+		.attr("x", function(d) { return d.cx-20; })
+		.attr("y", function(d) { return d.cy+6; })
+		.text( function(d) { return d.rating; })
+		.attr("font-size", "20px")
+		.attr("font-family", "sans-serif")
+		.attr("fill", "black");
+}
 
 
   </script>

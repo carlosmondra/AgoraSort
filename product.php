@@ -23,7 +23,32 @@
         include "DBConnect.php";
         $sql = "select * from phones where id=" . $productId;
         $result = pg_query($conn, $sql);
-        $row = pg_fetch_assoc($result); 
+        $row = pg_fetch_assoc($result);
+
+        function getUserRating($conn, $id) {
+            $userRatings = pg_query($conn, "select * from user_reviews where id=" . $id);
+            $colsUser = pg_num_fields($userRatings);
+    
+            $finalUserRating = 0;
+            $totalRatings = 0;
+            for ($x = 1; $x < $colsUser; $x++) {
+                $currentRatings = pg_fetch_result($userRatings, 0, $x);
+                $totalRatings = $totalRatings + $currentRatings;
+                $weight = 5 - (($x - 1) % 5);
+                $finalUserRating = $finalUserRating + $currentRatings * $weight * 20;
+            }
+            return round($finalUserRating / $totalRatings);
+        }
+    
+        function getExpertRating($conn, $id) {
+            $expertRatings = pg_query($conn, "select * from expert_ratings where id=" . $id);
+            $colsExpert = pg_num_fields($expertRatings);
+            $finalExpertRating = 0;
+            for ($x = 1; $x < $colsExpert; $x++) {
+                $finalExpertRating = $finalExpertRating + pg_fetch_result($expertRatings, 0, $x);
+            }
+            return round($finalExpertRating / $colsExpert);
+        }
     ?>
   
   <!--Navigation bar-->
